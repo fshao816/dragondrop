@@ -12,13 +12,14 @@
 
     function launchDragonDrop($){
         $(document).ready(function(){
+            var left = ($('body').width() / 2) - 100
             $('body')
                 .append('<img src="http://i58.tinypic.com/166qgm.png"></img>')
                 .find('> img').last()
                 .css({
                     position: 'absolute',
-                    top: '0px',
-                    left: '0px',
+                    top: '50px',
+                    left: left + 'px',
                     height: '200px',
                     width: '200px'
                 })
