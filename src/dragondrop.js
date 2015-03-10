@@ -12,18 +12,33 @@
 
     function launchDragonDrop($){
         $(document).ready(function(){
-            var left = ($('body').width() / 2) - 100
-            $('body')
+
+            var size = (parseInt(Math.random() * 4) + 2) * 50;
+            var left = (Math.random() * ($(window).width() - size - 20)) + 10;
+            var top = $(window).scrollTop() + (Math.random() * ($(window).height() - size - 20)) + 10;
+            var flip = parseInt(Math.random() * 2) ? true : false;
+            var img = $('body')
                 .append('<img src="http://i58.tinypic.com/166qgm.png"></img>')
-                .find('> img').last()
-                .css({
+                .find('> img').last();
+            img.css({
                     position: 'absolute',
-                    top: '50px',
+                    top: top + 'px',
                     left: left + 'px',
-                    height: '200px',
-                    width: '200px'
+                    height: size + 'px',
+                    width: size + 'px',
+                    'z-index': 99999
                 })
                 .draggable();
+            if (flip) {
+                img.css({
+                    '-moz-transform': 'scaleX(-1)',
+                    '-o-transform': 'scaleX(-1)',
+                    '-webkit-transform': 'scaleX(-1)',
+                    'transform': 'scaleX(-1)',
+                    'filter': 'FlipH',
+                    '-ms-filter': '"FlipH"'
+                });
+            }
         });
     }
 
